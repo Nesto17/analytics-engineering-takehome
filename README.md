@@ -95,8 +95,12 @@ More details are explained in the notebook, but these is the summary:
 
 ### 4. Communicate with Stakeholders
 
+Answers are in `./communication.txt`
 
+### 5. Next Steps (Hypothetically)
 
-### 5. Next Steps
-
-1. Improve DML and DDL
+1. Set a more clear DDL, constraints, and data warehouse schema.
+2. Understand how backend system works that generate the data in the first place.
+3. Set up nightly ETL batch jobs to update data in the warehouse.
+4. Connect to analytics platforms for more comprehensive visualizations.
+5. Circle back with business and dev teams to address their respective pain points.
