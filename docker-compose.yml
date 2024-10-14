@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: fetch_olap
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: olap
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+
+  python:
+    build: .
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app  
+    working_dir: /app
+    command: python load_data.py
+
+volumes:
+  postgres_data:
