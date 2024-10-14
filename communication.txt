@@ -1,13 +1,25 @@
-1. What questions do you have about the data?
+Hi [Stakeholder's Name],
 
+I hope you're having a fantastic day.
+
+I'm reaching out from the Analytics Engineering team to address the questions and concerns you've raised following our recent brainstorming sessions and data analyses.
+
+1. What questions do you have about the data?
+Given the unstructured nature of the data and the snapshot provided, we currently lack a comprehensive view of how the different entities are related. To move forward effectively, it is crucial that we have a more holistic understanding of the data sources and how they interact.
 
 2. How did you discover the data quality issues?
-
+We identified several data quality issues during our exploratory data analysis (EDA) using Python in Jupyter Notebooks. Through both structured analysis and heuristic observations, we’ve compiled a summary of these issues, which we’ll attach for your review. Addressing these concerns is essential before we can confidently roll out the data warehouse into production.
 
 3. What do you need to know to resolve the data quality issues?
+To resolve these issues, I need a clearer understanding of how the backend systems, particularly the receipt scanning feature, function. There are inconsistencies in the attributes across different entities, with varying numbers and types of measures. Additionally, some objects are missing key attributes—such as items scanned from receipts, which lack a defined schema or relationship to specific brands. Cross-functional discussions will be key to standardizing how we structure and validate these scanned items.
 
+4. What other information would help you optimize the data assets you’re creating?
+To build a more robust data warehouse, it’s important to understand how the three primary objects we’re working with relate to other backend entities. Additionally, I’d appreciate insight into Fetch’s broader business goals for implementing the data warehouse. This will help us design a schema that aligns with the needs and objectives of the business team.
 
-4. What other information would you need to help you optimize the data assets you're trying to create?
+5. What performance and scaling concerns do you anticipate in production, and how do you plan to address them?
+I’ve presented two potential schema designs for the data warehouse, each with its own set of trade-offs. Long-term, it’s beneficial to design a warehouse that encompasses multiple entities, beyond just receipts, to capture a more complete view of the data. However, this approach introduces scaling challenges, particularly around querying and storage. Fortunately, modern data warehouses support partitioning and tools like dbt for in-house data transformations, which will help mitigate these issues and improve efficiency.
 
+I look forward to your feedback and any additional information that can help us proceed efficiently.
 
-5. What performance and scaling concerns do you anticipate in production and how do you plan to address them?
+Best regards,
+Ernest Salim

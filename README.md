@@ -80,9 +80,10 @@ More details are explained in the notebook, but these is the summary:
 1. No join keys between `receiptItem`, `receipt`, and `brand`. Therefore, `barcode` is the most feasible way to connect between `receiptItem` and `brand` objects.
 2. With `barcode` being the join key, there are more than half of the `receiptItems` that don't have `barcode` attribute.
 3. Considering spending is one of the primary KPIs we're interested in studying, we use `finalPrice` as the main measure to quantify this objective. Moreover, since we're setting `receiptItem` to be the level of granularity in our OLAP, therefore we're not going to use `receipt` level `totalSpent` attribute. 
-4. There are only 174 `receiptItems` that don't have `finalPrice` measure.
+4. There are only 174 `receiptItems` that don't have `finalPrice` measure, which needs to be addressed in the long run.
 5. Considering the removal of `totalSpent`, there are only 55 `receipts` that have the aggregated `finalPrice` doesn't add up to the `totalSpent`.
 6. `pointsEarned` is a problematic measure as it doesn't show up in 6014 `receiptItems`. We have to resort to `pointsEarned` attribute in the `receiptLevel` if we want to analyze this metric.
+7. The overall structure of how these files are captured. I assume it's scraped from NoSQL databases, which explains the messiness of the data.
 
 #### Extra findings through heuristic observation
 
