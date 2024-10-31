@@ -5,7 +5,7 @@
 
 It's important to set several assumptions to scope down the problem and to somewhat set the baseline of what we're working with moving forward. This serves as the guide to design our relational data warehouse design.
 
-1. I will only consider bringing some features that are asked within the scope of the business problems. For example, if a feature A from `receipts` object serves no purpose in this context, then I am not going to ingest it to the data warehouse despite in a real production setting, it's always better to capture as many information as we can.
+1. I will only consider bringing some features that are related to the scope of the business problems. For example, if a feature A from `receipts` object serves no purpose in this context, then I am not going to ingest it to the data warehouse. Although, in the real production setting, it's always better to capture as many information as we can.
 2. We're going to set `barcode` as the join key between `receiptItems` and `brands` 
 3. Within the context of the business questions, `pointsEarned` is not the main KPI we're interested in analyzing, instead `finalPrice` and `totalSpent` are.
 4. I'm not fully familiar with how the backend system works, especially within the receipt scanner sector. Therefore, the following design and analyses are done based on my best heuristic guesses.
@@ -17,7 +17,7 @@ These assumptions are direct results of EDA on these files (addressed in Part 3)
 1. All of the objects (files) are unstructured as one instance of each object could differ structurally and quantitatively from one to another.
 2. The unstructured nature of the `receipts` object is further amplified by the existence of `rewardsReceiptItemList` which can contain arbitrary amount of both related and unrelated attributes which I assume depend on the brand / partner of the item that is scanned in the receipt.
 3. Despite the clutter, there's still a shared pattern that we can capture and load to a centralized data warehouse where further analytics can be operated on. To follow industry's standards, let's use **Kimball's technique (star schema)** to design the architecture of our data warehouse.
-4. This is where another challenge surface onto the picture. According to Kimball's rules, it's always the best practice to only have one **fact** table to contain all the quantitative related fields and features. In our case, we have two objects (`receipts` and `receiptItems`) that have a one-to-many relationship with both containing related quantitative values. This raises the question of what level of granularity that we want to center our data modeling at. Let's discuss these two different options:
+4. This is where another challenge surface onto the picture. According to Kimball's rules, it's always best practice to have only one **fact** table to contain all the quantitative related fields and features. In our case, we have two objects (`receipts` and `receiptItems`) that have a one-to-many relationship with both containing related quantitative values. This raises the question of what level of granularity that we want to center our data modeling at. Let's discuss these two different options:
     1. Considering the business questions that had been raised by stakeholders. I would like to propose setting the granularity at the `receiptItems` level and ultimately creating only one fact table.
     
     ![](./er_diagram-case1.png)
