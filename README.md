@@ -1,5 +1,5 @@
 
-## Fetch Analytical Engineering Take-Home Assessment
+## Fetch Analytics Engineering Take-Home Assessment
 
 ### 0. Initial Assumptions 
 
@@ -8,7 +8,7 @@ It's important to set several assumptions to scope down the problem and to somew
 1. I will only consider bringing some features that are asked within the scope of the business problems. For example, if a feature A from `receipts` object serves no purpose in this context, then I am not going to ingest it to the data warehouse despite in a real production setting, it's always better to capture as many information as we can.
 2. We're going to set `barcode` as the join key between `receiptItems` and `brands` 
 3. Within the context of the business questions, `pointsEarned` is not the main KPI we're interested in analyzing, instead `finalPrice` and `totalSpent` are.
-4. I'm not fully familiar with how the backend system works, especially within the receipt scanner department. Therefore, the following design and analyses are done based on my best heuristic guesses.
+4. I'm not fully familiar with how the backend system works, especially within the receipt scanner sector. Therefore, the following design and analyses are done based on my best heuristic guesses.
 
 These assumptions are direct results of EDA on these files (addressed in Part 3)
 
@@ -99,8 +99,8 @@ Answers are in `./communication.txt`
 
 ### 5. Next Steps (Hypothetically)
 
-1. Set a more clear DDL, constraints, and data warehouse schema.
-2. Understand how backend system works that generate the data in the first place.
-3. Set up nightly ETL batch jobs to update data in the warehouse.
-4. Connect to analytics platforms for more comprehensive visualizations.
-5. Circle back with business and dev teams to address their respective pain points.
+1. Set clearer DDL, constraints, and data warehouse schema.
+2. Understand how Fetch' backend systems generate the data.
+3. Set up nightly ETL batch jobs to update and refresh data in the warehouse.
+4. Connect to analytics platforms for visualizations.
+5. Circle back with business and dev teams to solve their respective pain points.
